@@ -3,18 +3,24 @@
       ================================================== -->
       <hr>
 {:hook('footer')}
-      <div id="footer">
-        <div class="links">
-        <php>$links=sp_getlinks();</php>
-        <foreach name="links" item="vo">
-          <a href="{$vo.link_url}" target="{$vo.link_target}">{$vo.link_name}</a>
-        </foreach>
-        </div>
-        <p>
-        Made by <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>
-        Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow" target="_blank">Apache License v2.0</a>.<br/>
-        Based on <a href="http://getbootstrap.com/2.3.2/" target="_blank">Bootstrap</a>.  Icons from <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome</a>
-        </p>
-      </div>
-      <div id="backtotop"><i class="fa fa-arrow-circle-up"></i></div>
+
+
+</div>
+<div class="bottom">
+    <div class="title">
+        <span>联系我们</span>
+        <span>关于我们</span>
+    </div>
+    <div class="contact">
+        <span>邮箱：youhancompany@youhan.com</span>
+        <span>QQ：123456789</span>
+        <span>电话：12345678912</span>
+        <span>南京优汉文化有限公司</span>
+    </div>
+</div>
+<footer>
+    <span>©2015-2015</span>
+    <span>ICP证：苏B1-20150000</span>
+    <span>南京优汉文化有限公司版权所有</span>
+</footer>
       {$site_tongji}
