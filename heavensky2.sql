@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-01-26 09:59:27
+-- Generation Time: 2016-01-29 12:56:45
 -- 服务器版本： 5.6.20
 -- PHP Version: 5.6.3
 
@@ -37,6 +37,15 @@ CREATE TABLE IF NOT EXISTS `hs2_ad` (
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- 表的关联 `hs2_ad`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_ad`
+--
+
+TRUNCATE TABLE `hs2_ad`;
 -- --------------------------------------------------------
 
 --
@@ -57,6 +66,15 @@ CREATE TABLE IF NOT EXISTS `hs2_asset` (
   `download_times` int(11) NOT NULL DEFAULT '0' COMMENT '下载次数'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='资源表';
 
+--
+-- 表的关联 `hs2_asset`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_asset`
+--
+
+TRUNCATE TABLE `hs2_asset`;
 -- --------------------------------------------------------
 
 --
@@ -69,6 +87,15 @@ CREATE TABLE IF NOT EXISTS `hs2_auth_access` (
   `type` varchar(30) DEFAULT NULL COMMENT '权限规则分类，请加应用前缀,如admin_'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='权限授权表';
 
+--
+-- 表的关联 `hs2_auth_access`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_auth_access`
+--
+
+TRUNCATE TABLE `hs2_auth_access`;
 --
 -- 转存表中的数据 `hs2_auth_access`
 --
@@ -130,6 +157,15 @@ CREATE TABLE IF NOT EXISTS `hs2_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件'
 ) ENGINE=MyISAM AUTO_INCREMENT=162 DEFAULT CHARSET=utf8 COMMENT='权限规则表';
 
+--
+-- 表的关联 `hs2_auth_rule`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_auth_rule`
+--
+
+TRUNCATE TABLE `hs2_auth_rule`;
 --
 -- 转存表中的数据 `hs2_auth_rule`
 --
@@ -321,6 +357,15 @@ CREATE TABLE IF NOT EXISTS `hs2_comments` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='评论表';
 
 --
+-- 表的关联 `hs2_comments`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_comments`
+--
+
+TRUNCATE TABLE `hs2_comments`;
+--
 -- 转存表中的数据 `hs2_comments`
 --
 
@@ -344,6 +389,15 @@ CREATE TABLE IF NOT EXISTS `hs2_common_action_log` (
   `ip` varchar(15) DEFAULT NULL COMMENT '访问者最后访问ip'
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='访问记录表';
 
+--
+-- 表的关联 `hs2_common_action_log`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_common_action_log`
+--
+
+TRUNCATE TABLE `hs2_common_action_log`;
 --
 -- 转存表中的数据 `hs2_common_action_log`
 --
@@ -369,6 +423,15 @@ CREATE TABLE IF NOT EXISTS `hs2_guestbook` (
   `status` smallint(2) NOT NULL DEFAULT '1' COMMENT '留言状态，1：正常，0：删除'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='留言表';
 
+--
+-- 表的关联 `hs2_guestbook`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_guestbook`
+--
+
+TRUNCATE TABLE `hs2_guestbook`;
 -- --------------------------------------------------------
 
 --
@@ -388,6 +451,15 @@ CREATE TABLE IF NOT EXISTS `hs2_links` (
   `listorder` int(10) NOT NULL DEFAULT '0' COMMENT '排序'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='友情链接表';
 
+--
+-- 表的关联 `hs2_links`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_links`
+--
+
+TRUNCATE TABLE `hs2_links`;
 --
 -- 转存表中的数据 `hs2_links`
 --
@@ -416,6 +488,15 @@ CREATE TABLE IF NOT EXISTS `hs2_menu` (
   `listorder` smallint(6) unsigned NOT NULL DEFAULT '0' COMMENT '排序ID'
 ) ENGINE=MyISAM AUTO_INCREMENT=162 DEFAULT CHARSET=utf8 COMMENT='后台菜单表';
 
+--
+-- 表的关联 `hs2_menu`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_menu`
+--
+
+TRUNCATE TABLE `hs2_menu`;
 --
 -- 转存表中的数据 `hs2_menu`
 --
@@ -603,6 +684,15 @@ CREATE TABLE IF NOT EXISTS `hs2_nav` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='前台导航表';
 
 --
+-- 表的关联 `hs2_nav`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_nav`
+--
+
+TRUNCATE TABLE `hs2_nav`;
+--
 -- 转存表中的数据 `hs2_nav`
 --
 
@@ -625,6 +715,15 @@ CREATE TABLE IF NOT EXISTS `hs2_nav_cat` (
   `remark` text COMMENT '备注'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='前台导航分类表';
 
+--
+-- 表的关联 `hs2_nav_cat`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_nav_cat`
+--
+
+TRUNCATE TABLE `hs2_nav_cat`;
 --
 -- 转存表中的数据 `hs2_nav_cat`
 --
@@ -654,6 +753,15 @@ CREATE TABLE IF NOT EXISTS `hs2_oauth_user` (
   `openid` varchar(40) NOT NULL COMMENT '第三方用户id'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='第三方用户表';
 
+--
+-- 表的关联 `hs2_oauth_user`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_oauth_user`
+--
+
+TRUNCATE TABLE `hs2_oauth_user`;
 -- --------------------------------------------------------
 
 --
@@ -667,6 +775,15 @@ CREATE TABLE IF NOT EXISTS `hs2_options` (
   `autoload` int(2) NOT NULL DEFAULT '1' COMMENT '是否自动加载'
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='全站配置表';
 
+--
+-- 表的关联 `hs2_options`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_options`
+--
+
+TRUNCATE TABLE `hs2_options`;
 --
 -- 转存表中的数据 `hs2_options`
 --
@@ -698,6 +815,15 @@ CREATE TABLE IF NOT EXISTS `hs2_plugins` (
   `listorder` smallint(6) NOT NULL DEFAULT '0' COMMENT '排序'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='插件表';
 
+--
+-- 表的关联 `hs2_plugins`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_plugins`
+--
+
+TRUNCATE TABLE `hs2_plugins`;
 -- --------------------------------------------------------
 
 --
@@ -713,6 +839,7 @@ CREATE TABLE IF NOT EXISTS `hs2_posts` (
   `post_content` longtext COMMENT 'post内容',
   `post_title` text COMMENT 'post标题',
   `post_excerpt` text COMMENT 'post摘要',
+  `post_region` int(10) unsigned DEFAULT '0' COMMENT 'post所属地区，为region表中的地区码',
   `post_extdata` text COMMENT 'post扩展信息，json格式',
   `post_status` int(2) DEFAULT '1' COMMENT 'post状态，1已审核，0未审核',
   `comment_status` int(2) DEFAULT '1' COMMENT '评论状态，1允许，0不允许',
@@ -727,15 +854,25 @@ CREATE TABLE IF NOT EXISTS `hs2_posts` (
   `post_like` int(11) DEFAULT '0' COMMENT 'post赞数',
   `istop` tinyint(1) NOT NULL DEFAULT '0' COMMENT '置顶 1置顶； 0不置顶',
   `recommended` tinyint(1) NOT NULL DEFAULT '0' COMMENT '推荐 1推荐 0不推荐'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Portal文章表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Portal文章表';
 
+--
+-- 表的关联 `hs2_posts`:
+--   `post_region`
+--       `hs2_region` -> `id`
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_posts`
+--
+
+TRUNCATE TABLE `hs2_posts`;
 --
 -- 转存表中的数据 `hs2_posts`
 --
 
-INSERT INTO `hs2_posts` (`id`, `post_author`, `post_keywords`, `post_source`, `post_date`, `post_content`, `post_title`, `post_excerpt`, `post_extdata`, `post_status`, `comment_status`, `post_modified`, `post_content_filtered`, `post_parent`, `post_type`, `post_mime_type`, `comment_count`, `smeta`, `post_hits`, `post_like`, `istop`, `recommended`) VALUES
-(1, 1, 'keyword000 keyword001', 'void', '2016-01-25 23:56:19', '<p style="text-align: left;">\r\n    niconiconi~\r\n</p>\r\n<p>\r\n    <img src="http://ww4.sinaimg.cn/large/728a1733jw1eplwk1jjn3j20vk0hs41y.jpg"/> &nbsp;\r\n &nbsp;<br/>\r\n</p>\r\n<script>alert("niconiconi~");</script>\r\n<pre>&lt;?php\r\n// +----------------------------------------------------------------------\r\n// | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]\r\n// +----------------------------------------------------------------------\r\n// | Copyright (c) 2013-2014 http://www.thinkcmf.com All rights reserved.\r\n// +----------------------------------------------------------------------\r\n// | Author: Dean &lt;zxxjjforever@163.com&gt;\r\n// +----------------------------------------------------------------------\r\nnamespace plugins\\Snow;\r\nuse Common\\Lib\\Plugin;\r\n\r\n/**\r\n * Snow\r\n */\r\nclass SnowPlugin extends Plugin{\r\n\r\n        public $info = array(\r\n            &#39;name&#39;=&gt;&#39;Snow&#39;,\r\n            &#39;title&#39;=&gt;&#39;圣诞雪花&#39;,\r\n            &#39;description&#39;=&gt;&#39;圣诞雪花特效&#39;,\r\n            &#39;status&#39;=&gt;1,\r\n            &#39;author&#39;=&gt;&#39;ThinkCMF&#39;,\r\n            &#39;version&#39;=&gt;&#39;1.0&#39;\r\n        );\r\n\r\n        public function install(){//安装方法必须实现\r\n            return true;//安装成功返回true，失败false\r\n        }\r\n\r\n        public function uninstall(){//卸载方法必须实现\r\n            return true;//卸载成功返回true，失败false\r\n        }\r\n        \r\n        //实现的footer钩子方法\r\n        public function footer_end($param){\r\n           $config=$this-&gt;getConfig();\r\n           $this-&gt;assign($config);\r\n           $this-&gt;display(&#39;widget&#39;);\r\n        }\r\n\r\n    }</pre>\r\n<p>\r\n    <br/>\r\n</p>\r\n<p style="display:none;" data-background="background-repeat:no-repeat; background-position:center center; background-image:url(http://img.mengniang.org/common/7/7e/Niconiconi.gif);">\r\n    <br/>\r\n</p>', 'First Article', '233333', NULL, 1, 1, '2016-01-25 23:52:07', NULL, 0, NULL, '', 2, '{"thumb":""}', 27, 2, 0, 0),
-(2, 1, '', '', '2016-01-26 02:18:52', '<p>233333333333333</p>', '某人的详情页', 'detail', NULL, 1, 1, '2016-01-26 02:18:30', NULL, 0, NULL, '', 0, '{"thumb":""}', 2, 1, 0, 0);
+INSERT INTO `hs2_posts` (`id`, `post_author`, `post_keywords`, `post_source`, `post_date`, `post_content`, `post_title`, `post_excerpt`, `post_region`, `post_extdata`, `post_status`, `comment_status`, `post_modified`, `post_content_filtered`, `post_parent`, `post_type`, `post_mime_type`, `comment_count`, `smeta`, `post_hits`, `post_like`, `istop`, `recommended`) VALUES
+(6, 1, 'kw', 'src', '2016-01-28 14:13:26', '<p>232323</p>', 'test', 'ext', 0, NULL, 1, 1, '2016-01-28 14:13:05', NULL, 0, NULL, '', 0, '{"thumb":""}', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -750,10 +887,20 @@ CREATE TABLE IF NOT EXISTS `hs2_region` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='全国省市县行政区划字典表';
 
 --
+-- 表的关联 `hs2_region`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_region`
+--
+
+TRUNCATE TABLE `hs2_region`;
+--
 -- 转存表中的数据 `hs2_region`
 --
 
 INSERT INTO `hs2_region` (`id`, `parent_id`, `name`) VALUES
+(0, 0, '不详'),
 (110000, 0, '北京市'),
 (110100, 110000, '市辖区'),
 (110101, 110100, '东城区'),
@@ -2912,9 +3059,9 @@ INSERT INTO `hs2_region` (`id`, `parent_id`, `name`) VALUES
 (440281, 440200, '乐昌市'),
 (440282, 440200, '南雄市'),
 (440300, 440000, '深圳市'),
-(440301, 440300, '市辖区'),
-(440303, 440300, '罗湖区');
+(440301, 440300, '市辖区');
 INSERT INTO `hs2_region` (`id`, `parent_id`, `name`) VALUES
+(440303, 440300, '罗湖区'),
 (440304, 440300, '福田区'),
 (440305, 440300, '南山区'),
 (440306, 440300, '宝安区'),
@@ -4286,6 +4433,15 @@ CREATE TABLE IF NOT EXISTS `hs2_role` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 --
+-- 表的关联 `hs2_role`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_role`
+--
+
+TRUNCATE TABLE `hs2_role`;
+--
 -- 转存表中的数据 `hs2_role`
 --
 
@@ -4304,6 +4460,15 @@ CREATE TABLE IF NOT EXISTS `hs2_role_user` (
   `user_id` int(11) DEFAULT '0' COMMENT '用户id'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户角色对应表';
 
+--
+-- 表的关联 `hs2_role_user`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_role_user`
+--
+
+TRUNCATE TABLE `hs2_role_user`;
 --
 -- 转存表中的数据 `hs2_role_user`
 --
@@ -4325,6 +4490,15 @@ CREATE TABLE IF NOT EXISTS `hs2_route` (
   `status` tinyint(1) DEFAULT '1' COMMENT '状态，1：启用 ;0：不启用'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='url路由表';
 
+--
+-- 表的关联 `hs2_route`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_route`
+--
+
+TRUNCATE TABLE `hs2_route`;
 -- --------------------------------------------------------
 
 --
@@ -4343,6 +4517,15 @@ CREATE TABLE IF NOT EXISTS `hs2_slide` (
   `listorder` int(10) DEFAULT '0' COMMENT '排序'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片表';
 
+--
+-- 表的关联 `hs2_slide`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_slide`
+--
+
+TRUNCATE TABLE `hs2_slide`;
 -- --------------------------------------------------------
 
 --
@@ -4357,6 +4540,15 @@ CREATE TABLE IF NOT EXISTS `hs2_slide_cat` (
   `cat_status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片分类表';
 
+--
+-- 表的关联 `hs2_slide_cat`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_slide_cat`
+--
+
+TRUNCATE TABLE `hs2_slide_cat`;
 -- --------------------------------------------------------
 
 --
@@ -4382,6 +4574,15 @@ CREATE TABLE IF NOT EXISTS `hs2_terms` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类表';
 
 --
+-- 表的关联 `hs2_terms`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_terms`
+--
+
+TRUNCATE TABLE `hs2_terms`;
+--
 -- 转存表中的数据 `hs2_terms`
 --
 
@@ -4402,15 +4603,25 @@ CREATE TABLE IF NOT EXISTS `hs2_term_relationships` (
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '分类id',
   `listorder` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1发布，0不发布'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类对应表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类对应表';
 
+--
+-- 表的关联 `hs2_term_relationships`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_term_relationships`
+--
+
+TRUNCATE TABLE `hs2_term_relationships`;
 --
 -- 转存表中的数据 `hs2_term_relationships`
 --
 
 INSERT INTO `hs2_term_relationships` (`tid`, `object_id`, `term_id`, `listorder`, `status`) VALUES
 (1, 1, 1, 0, 1),
-(2, 2, 3, 0, 1);
+(2, 2, 3, 0, 1),
+(3, 6, 3, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -4441,11 +4652,20 @@ CREATE TABLE IF NOT EXISTS `hs2_users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 --
+-- 表的关联 `hs2_users`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_users`
+--
+
+TRUNCATE TABLE `hs2_users`;
+--
 -- 转存表中的数据 `hs2_users`
 --
 
 INSERT INTO `hs2_users` (`id`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `avatar`, `sex`, `birthday`, `signature`, `last_login_ip`, `last_login_time`, `create_time`, `user_activation_key`, `user_status`, `score`, `user_type`, `coin`, `mobile`) VALUES
-(1, 'root', '###78c4a0bc9677ec556f5b12a2133f516a', 'admin', 'sdygt@users.noreply.github.com', '', NULL, 0, NULL, NULL, '0.0.0.0', '2016-01-26 12:15:06', '2016-01-18 09:59:11', '', 1, 0, 1, 0, ''),
+(1, 'root', '###78c4a0bc9677ec556f5b12a2133f516a', 'admin', 'sdygt@users.noreply.github.com', '', NULL, 0, NULL, NULL, '0.0.0.0', '2016-01-28 13:56:00', '2016-01-18 09:59:11', '', 1, 0, 1, 0, ''),
 (2, 'root_sdygt_net', '###77c95fd94f40f9987e3f5b42c989fe0f', 'root_sdygt_net', 'root@sdygt.net', 'sdygt.net', NULL, 1, '2016-01-21', 'root@sdygt.net', '0.0.0.0', '2016-01-25 23:19:25', '2016-01-25 23:19:25', '', 1, 0, 2, 0, ''),
 (3, 'admin', '###78c4a0bc9677ec556f5b12a2133f516a', '', 'admin@sdygt.net', '', NULL, 0, NULL, NULL, '0.0.0.0', '2016-01-25 23:59:31', '2016-01-25 23:51:02', '', 1, 0, 1, 0, '');
 
@@ -4466,6 +4686,15 @@ CREATE TABLE IF NOT EXISTS `hs2_user_favorites` (
   `createtime` int(11) DEFAULT NULL COMMENT '收藏时间'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户收藏表';
 
+--
+-- 表的关联 `hs2_user_favorites`:
+--
+
+--
+-- 插入之前先把表清空（truncate） `hs2_user_favorites`
+--
+
+TRUNCATE TABLE `hs2_user_favorites`;
 --
 -- 转存表中的数据 `hs2_user_favorites`
 --
@@ -4584,7 +4813,8 @@ ALTER TABLE `hs2_posts`
   ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`id`),
   ADD KEY `post_parent` (`post_parent`),
   ADD KEY `post_author` (`post_author`),
-  ADD KEY `post_date` (`post_date`) USING BTREE;
+  ADD KEY `post_date` (`post_date`) USING BTREE,
+  ADD KEY `post_region` (`post_region`);
 
 --
 -- Indexes for table `hs2_region`
@@ -4729,7 +4959,7 @@ ALTER TABLE `hs2_plugins`
 -- AUTO_INCREMENT for table `hs2_posts`
 --
 ALTER TABLE `hs2_posts`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `hs2_role`
 --
@@ -4759,7 +4989,7 @@ ALTER TABLE `hs2_terms`
 -- AUTO_INCREMENT for table `hs2_term_relationships`
 --
 ALTER TABLE `hs2_term_relationships`
-  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hs2_users`
 --
@@ -4769,7 +4999,17 @@ ALTER TABLE `hs2_users`
 -- AUTO_INCREMENT for table `hs2_user_favorites`
 --
 ALTER TABLE `hs2_user_favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- 限制导出的表
+--
+
+--
+-- 限制表 `hs2_posts`
+--
+ALTER TABLE `hs2_posts`
+  ADD CONSTRAINT `FK_hs2_posts_hs2_region` FOREIGN KEY (`post_region`) REFERENCES `hs2_region` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
