@@ -84,7 +84,7 @@ function att_cancel(obj,id,source){
 		$('#att-name').append('|'+filename);
 
 		var imgstr_del = $("#att-status-del").html();
-		var imgstr_del_obj = selected.children("img")
+		var imgstr_del_obj = selected.children("img");
 		var length_del = imgstr_del_obj.length;
 		var strs_del='';
 		for(var i=0;i<length_del;i++){

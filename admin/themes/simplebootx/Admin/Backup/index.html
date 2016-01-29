@@ -23,13 +23,13 @@
 	            <tr>
 	        	    <td align="right">{:L('BACKUP_TYPE')}</td>
 	        	    <td>
-	                	<label><input type="radio" checked="checked" value="full" name="backup_type" onclick="javascript:$('#js-showtables').hide();"> {:L('BACKUP_ALL')} &nbsp;&nbsp;</label>
-	                    <label><input type="radio" value="custom" name="backup_type" onclick="javascript:$('#js-showtables').show();"> {:L('CUSTOM_BACKUP')}</label>
+	                	<label><input type="radio" checked="checked" value="full" name="backup_type" onclick="$('#js-showtables').hide();"> {:L('BACKUP_ALL')} &nbsp;&nbsp;</label>
+	                    <label><input type="radio" value="custom" name="backup_type" onclick="$('#js-showtables').show();"> {:L('CUSTOM_BACKUP')}</label>
 	                </td>
 	          	</tr>
 	            <tr id="js-showtables">
 	                <td align="right">
-	                    <label><input name="selectall" type="checkbox" checked="checked" value="" onclick="javascript:$('.js-checkitem').attr('checked', this.checked);" /> {:L('SELECT_ALL')}</label>
+	                    <label><input name="selectall" type="checkbox" checked="checked" value="" onclick="$('.js-checkitem').attr('checked', this.checked);" /> {:L('SELECT_ALL')}</label>
 	                </td>
 	                <td colspan="2">
 	                    <volist name="tables" id="val">

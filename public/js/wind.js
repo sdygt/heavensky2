@@ -545,9 +545,8 @@
             doc.detachEvent("onreadystatechange", domContentLoaded);
             domReady();
         }
-    };
-
-    // Catch cases where ready() is called after the browser event has already occurred.
+    }
+     // Catch cases where ready() is called after the browser event has already occurred.
     // we once tried to use readyState "interactive" here, but it caused issues like the one
     // discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15    
     if (doc.readyState === "complete") {
@@ -733,7 +732,7 @@ Wind.ready(function() {
 	win.Wind = win.Wind || {};
     //!TODO old webkit and old firefox does not support
 	Wind.css = function(alias/*alias or path*/,callback) {
-		var url = alias_css[alias] ? alias_css[alias] : alias
+		var url = alias_css[alias] ? alias_css[alias] : alias;
 		var link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = url;
@@ -743,7 +742,7 @@ Wind.ready(function() {
                 callback.done = true;
                 callback();
             }
-        }
+        };
         document.getElementsByTagName('head')[0].appendChild(link);
 	};
 

@@ -73,8 +73,8 @@
 		        //$(window).blur();
 		        //阻止默认动作
 		        e.preventDefault();
-		    };
-        	capture(this);
+			}
+			capture(this);
 
         	//获取窗口尺寸和滚动条状态
 		    winWidth = $(window).width();
@@ -138,7 +138,7 @@
 		        }
 			});
         });
-	}
+	};
 
     $.fn[pluginName] = Wind[pluginName]= function ( options ) {
         return this.each(function () {

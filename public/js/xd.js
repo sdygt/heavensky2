@@ -128,7 +128,7 @@
 			addEvent(window, "message", messageHanlder);
 	    } else {
 			messagePoll(window, "name");
-	    };
+		}
 	};
 	
 	/**

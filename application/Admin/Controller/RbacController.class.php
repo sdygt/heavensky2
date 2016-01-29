@@ -141,7 +141,7 @@ class RbacController extends AdminbaseController {
         	$result[$n]['parentid_node'] = ($t['parentid']) ? ' class="child-of-node-' . $t['parentid'] . '"' : '';
         }
         $str = "<tr id='node-\$id' \$parentid_node>
-                       <td style='padding-left:30px;'>\$spacer<input type='checkbox' name='menuid[]' value='\$id' level='\$level' \$checked onclick='javascript:checknode(this);'> \$name</td>
+                       <td style='padding-left:30px;'>\$spacer<input type='checkbox' name='menuid[]' value='\$id' level='\$level' \$checked onclick='checknode(this);'> \$name</td>
 	    			</tr>";
         $menu->init($result);
         $categorys = $menu->get_tree(0, $str);

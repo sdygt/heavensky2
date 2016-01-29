@@ -63,7 +63,7 @@ var opts = {
   title : "" , // 信息窗口标题
   enableMessage:false,//设置允许信息窗发送短息
 
-}
+};
 var infoWindow = new BMap.InfoWindow("拖动我设置你的位置", opts);  // 创建信息窗口对象
 marker.openInfoWindow(infoWindow);
 
@@ -89,7 +89,7 @@ function mgetLocation(point){
 	     //alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
 	 });
 }
-marker.addEventListener("dragend",msetpoint)
+marker.addEventListener("dragend",msetpoint);
 
 map.addEventListener("click", msetpoint);
 

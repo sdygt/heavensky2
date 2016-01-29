@@ -192,7 +192,7 @@
             Wind.use('artDialog','iframeTools',function(){
                 art.dialog.close();
             });
-        };
+        }
     });
 
     //所有的删除操作，删除数据后刷新页面
@@ -210,7 +210,7 @@
                     content: '确定要删除吗？',
                     follow: $_this,
                     close: function () {
-                        $_this.focus();; //关闭时让触发弹窗的元素获取焦点
+                        $_this.focus(); //关闭时让触发弹窗的元素获取焦点
                         return true;
                     },
                     okVal:"确定",
@@ -263,7 +263,7 @@
                     content: msg,
                     follow: $_this,
                     close: function () {
-                        $_this.focus();; //关闭时让触发弹窗的元素获取焦点
+                        $_this.focus(); //关闭时让触发弹窗的元素获取焦点
                         return true;
                     },
                     ok: function () {
@@ -365,7 +365,7 @@
     }
 
     //日期选择器
-    var dateInput = $("input.js-date")
+    var dateInput = $("input.js-date");
     if (dateInput.length) {
         Wind.use('datePicker', function () {
             dateInput.datePicker();

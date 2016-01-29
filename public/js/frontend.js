@@ -239,8 +239,8 @@
             Wind.use('artDialog','iframeTools',function(){
                 art.dialog.close();
             });
-        };
-    });
+		}
+	});
 
     //所有的删除操作，删除数据后刷新页面
     if ($('a.js-ajax-delete').length) {
@@ -379,7 +379,7 @@
     }
 
     //日期选择器
-    var dateInput = $("input.js-date")
+    var dateInput = $("input.js-date");
     if (dateInput.length) {
         Wind.use('datePicker', function () {
             dateInput.datePicker();
@@ -697,9 +697,8 @@ function getCookie(name) {
         if (c.indexOf(nameEQ) == 0) {
             return c.substring(nameEQ.length, c.length);
         }
-    };
-
-    return null;
+	}
+	return null;
 }
 
 //设置cookie

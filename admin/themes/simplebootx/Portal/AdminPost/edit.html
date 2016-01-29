@@ -77,7 +77,7 @@
 										</foreach>
 									</ul>
 								</fieldset>
-								<a href="javascript:;" onclick="javascript:flashupload('albums_images', '图片上传','photos',change_images,'10,gif|jpg|jpeg|png|bmp,0','','','')" class="btn btn-small">选择图片</a>
+								<a href="javascript:;" onclick="flashupload('albums_images', '图片上传','photos',change_images,'10,gif|jpg|jpeg|png|bmp,0','','','')" class="btn btn-small">选择图片</a>
 							</td>
 						</tr>
 					</table>
@@ -199,8 +199,7 @@
 						editorcontent.sync();
 					} catch (err) {
 					}
-					;
-					return editorcontent.hasContents();
+                    return editorcontent.hasContents();
 				});
 				var form = $('form.js-ajax-forms');
 				//ie处理placeholder提交问题
