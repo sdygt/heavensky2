@@ -4,6 +4,11 @@
         margin-bottom: 5px;
     }
 </style>
+<script src="__TMPL__Public/assets/js/distpicker.data.js"></script>
+<script src="__TMPL__Public/assets/js/distpicker.js"></script>
+
+<script src="__TMPL__Public/assets/js/jquery.js"></script>
+
 </head>
 <body>
 <div class="wrap js-check-wrap">
@@ -38,17 +43,22 @@
                             多关键词之间用空格或者英文逗号隔开
                         </td>
                     </tr>
+                    <!--<tr>-->
+                        <!--<th>所属地区</th>&lt;!&ndash;TODO:需要改成三联下拉框，此外省级单位可以直接写死在这里节约一次ajax请求，然后查询结果大约可以缓存在cookie里？&ndash;&gt;-->
+                        <!--<td>-->
+                            <!--<input type="text" name="post[post_region]" id="region" value="" style="width: 400px" placeholder="请输入地区码">-->
+                        <!--</td>-->
+                    <!--</tr>-->
                     <tr>
                         <th>所属地区</th><!--TODO:需要改成三联下拉框，此外省级单位可以直接写死在这里节约一次ajax请求，然后查询结果大约可以缓存在cookie里？-->
                         <td>
-                            <input type="text" name="post[post_region]" id="region" value="" style="width: 400px" placeholder="请输入地区码">
+                            <div data-toggle="distpicker" id="distpicker" >
+                                <select data-province="---- 选择省 ----" name="post[post_province]"></select>
+                                <select data-city="---- 选择市 ----" name="post[post_city]"></select>
+                                <select data-district="---- 选择区 ----" name="post[post_district]"></select>
+                            </div>
                         </td>
                     </tr>
-                    <!--NOTE:应该来说需要给每个下拉框加一个“不详”的默认选项，对应级别的地区码为00(如果省份也不详就直接为0)
-						前一个下拉框选择具体地区后才会获取并显示下一个下拉框的内容
-						这里有个问题是这个form带了.js-ajax-forms，点了有.js-ajax-submit的按钮以后就会ajax post整个form的value
-						所以需要在按钮触发之后正确地把region_id放在payload里
-						-->
                     <tr>
                         <th>文章来源</th>
                         <td>
@@ -142,6 +152,7 @@
 <script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript">
+
     $(function () {
         $(".js-ajax-close-btn").on('click', function (e) {
             e.preventDefault();
