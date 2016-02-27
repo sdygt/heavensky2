@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<html>
 	<head>
-		<title>{$site_seo_title} {$site_name}</title>
+		<title>首页 {$site_name}</title>
 		<meta name="keywords" content="{$site_seo_keywords}" />
 		<meta name="description" content="{$site_seo_description}">
 		<tc_include file="Public:head" />
@@ -19,6 +19,11 @@
 			-o-border-radius: 1.2em;
 			border-radius: 1.2em;
 			}
+			body{
+				background-image: url(__TMPL__Public/images/bg.png);
+				background-repeat:2;
+				background-size:100% 150%;
+			}
 			@media (max-width: 767px){
 				.sy-box{margin: 12px -20px 0 -20px;}
 				.caption-wraper{left:0;bottom: 0.4em;}
@@ -32,9 +37,17 @@
 				-o-border-radius: 0;
 				border-radius: 0;}
 			}
+			.notice {
+			    background-image: url(__TMPL__Public/images/s-opcity.png);
+			    border: 7px solid #100964;
+			    margin: -7px 60px;
+			    height: 130px;
+			    text-align: center;
+			    padding: 10px;
+			}
 		</style>
 	</head>
-<body class="body-white">
+<body >
 <tc_include file="Public:nav" />
 
 <php>
@@ -42,7 +55,7 @@ $home_slides=sp_getslide("portal_index");
 
 $home_slides=empty($home_slides)?$default_home_slides:$home_slides;
 </php>
-<ul id="homeslider" class="unstyled">
+<!-- <ul id="homeslider" class="unstyled">
 	<foreach name="home_slides" item="vo">
 	<li>
 		<div class="caption-wraper">
@@ -51,13 +64,19 @@ $home_slides=empty($home_slides)?$default_home_slides:$home_slides;
 		<a href="{$vo.slide_url}"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""></a>
 	</li>
 	</foreach>
-</ul>
+</ul> -->
 <div class="container">
 	
 	<div>
-		<h1 class="text-center">快速了解ThinkCMF</h1>
-		<h3 class="text-center">Quickly understand the ThinkCMF</h3>
+		<img src="__TMPL__Public/images/guide.png" style="width: 100%;position: relative;margin: auto;top: 20px;">
 	</div>
+	<div class="notice">
+            <h1><p>公告：</p></h1>
+            <p>Notice：</p>
+            <br />
+            <p><span>这里是忆天堂官方网站，忆天堂是为逝去的生命悼念之所。更多内容</span></p>
+            <p>Here is The Memory of Heaven's offical website.Mourning the loss life.More.</p>
+        </div>
 	<div class="row">
 		<div class="span4">
 			 <h2 class="font-large nospace"><i class="fa fa-bars"></i> MVC分层模式</h2>
