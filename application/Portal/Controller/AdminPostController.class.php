@@ -191,7 +191,8 @@ class AdminPostController extends AdminbaseController {
             $article = I("post.post");
             $article['smeta'] = json_encode($_POST['smeta']);
             $article['post_content'] = htmlspecialchars_decode($article['post_content']);
-            $article['post_region'] = intval($_POST['post']['post_region']);
+            $article['post_region'] = $article['post_province'].$article['post_city'].$article['post_district'];
+            //$article['post_region'] = intval($_POST['post']['post_region']);
 
             $result = $this->posts_model->add($article);
             if ($result) {

@@ -7,7 +7,6 @@
 <script src="__TMPL__Public/assets/js/distpicker.data.js"></script>
 <script src="__TMPL__Public/assets/js/distpicker.js"></script>
 
-<script src="__TMPL__Public/assets/js/jquery.js"></script>
 
 </head>
 <body>
@@ -44,15 +43,24 @@
                         </td>
                     </tr>
                     <!--<tr>-->
-                        <!--<th>所属地区</th>&lt;!&ndash;TODO:需要改成三联下拉框，此外省级单位可以直接写死在这里节约一次ajax请求，然后查询结果大约可以缓存在cookie里？&ndash;&gt;-->
-                        <!--<td>-->
-                            <!--<input type="text" name="post[post_region]" id="region" value="" style="width: 400px" placeholder="请输入地区码">-->
-                        <!--</td>-->
+                    <!--<th>所属地区</th>&lt;!&ndash;TODO:需要改成三联下拉框，此外省级单位可以直接写死在这里节约一次ajax请求，然后查询结果大约可以缓存在cookie里？&ndash;&gt;-->
+                    <!--<td>-->
+                    <!--<input type="text" name="post[post_region]" id="region" value="" style="width: 400px" placeholder="请输入地区码">-->
+                    <!--</td>-->
                     <!--</tr>-->
+                    <tr>
+                        <th width="80">逝世日期</th>
+                        <td>
+                            <input class="js-date" type="text" id="input-publicdate"
+                                   placeholder="2016-01-01" name="post[post_diedate]" value="{$publicdate}"
+                                   required style="width:90px">
+                            <span class="form-required">*</span>
+                        </td>
+                    </tr>
                     <tr>
                         <th>所属地区</th><!--TODO:需要改成三联下拉框，此外省级单位可以直接写死在这里节约一次ajax请求，然后查询结果大约可以缓存在cookie里？-->
                         <td>
-                            <div data-toggle="distpicker" id="distpicker" >
+                            <div data-toggle="distpicker" id="distpicker">
                                 <select data-province="---- 选择省 ----" name="post[post_province]"></select>
                                 <select data-city="---- 选择市 ----" name="post[post_city]"></select>
                                 <select data-district="---- 选择区 ----" name="post[post_district]"></select>
