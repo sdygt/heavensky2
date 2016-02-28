@@ -23,7 +23,7 @@
 		    		<span>{$post_date} by {$user_nicename|default=$user_login}</span>
 		    		<span>
 		    			<a href="javascript:;"><i class="fa fa-eye"></i><span>{$post_hits}</span></a>
-						<a href="{:U('article/do_like',array('id'=>$object_id))}" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$post_like}</span></a>
+						<a href="{:U('article/do_like',array('id'=>$object_id))}" class="js-count-btn"></a>
 						<a href="{:U('user/favorite/do_favorite',array('id'=>$object_id))}" class="js-favorite-btn" data-title="{$post_title}" data-url="{:U('article/index',array('id'=>$tid))}" data-key="{:sp_get_favorite_key('posts',$object_id)}">
 							<i class="fa fa-star-o"></i>
 						</a>
@@ -87,7 +87,7 @@
         	
         	<div class="tc-box">
 	        	<div class="headtitle">
-	        		<h2>热门文章</h2>
+	        		<h2>热门</h2>
 	        	</div>
 	        	<div class="ranking">
 	        		<php>

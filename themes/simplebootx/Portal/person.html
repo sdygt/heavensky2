@@ -27,7 +27,7 @@
 
             <div class="tc-box first-box article-box">
                 <h2>{$post_title}</h2>
-                <div class="article-infobox">
+                <div class="article-infobox" >
                     <span>{$post_date} by {$user_nicename|default=$user_login}</span>
 		    		<span>
 		    			<a href="javascript:;"><i class="fa fa-eye"></i><span>{$post_hits}</span></a>
@@ -37,18 +37,26 @@
                             <i class="fa fa-star-o"></i>
                         </a>
 					</span>
+                    <hr>
                 </div>
-                <div class="item-image">
-                    <div style="border-color: #00a0d2;border-width: medium;">
+                <div class="item-image" style="margin-top:50px;">
+                    <div >
                         <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="img-responsive img-thumbnail"
-                             alt="{$vo.post_title}">
+                             alt="{$vo.post_title}" style="margin-left: 50px;width: 270px;height: 400px;">
+                        <div style="display: inline-block;margin-left: 100px;">
+                            <p style="font-size: 20px;margin: 20px 0">姓名：{$post_title}</p>
+                            <p style="font-size: 20px;margin: 20px 0">逝世日期：{$post_diedate}</p>
+                            <p style="font-size: 20px;margin: 20px 0">所属地区：{$post_region}</p>
+                            <a style="font-size: 20px;margin: 20px 0" href="{:U('article/do_like',array('id'=>$object_id))}" class="js-count-btn">献花:</i><span class="count">{$post_like}</span></a>
+
+                        </div>
+
                     </div>
-                    <a href="{:U('article/do_like',array('id'=>$object_id))}" class="js-count-btn">献花<i
-                            class="fa fa-thumbs-up"></i><span class="count">{$post_like}</span></a>
+
                 </div>
                 <hr>
                 <div id="article_content">
-                    <p>所属地区：{$post_region}</p>
+
                     {$post_content}
                 </div>
                 <if condition="!empty($post_source)">
@@ -137,7 +145,7 @@
 
             <div class="tc-box">
                 <div class="headtitle">
-                    <h2>热门文章</h2>
+                    <h2>热门</h2>
                 </div>
                 <div class="ranking">
                     <php>

@@ -73,9 +73,9 @@ class ArticleController extends HomebaseController {
 
     	if($can_like){
     		$posts_model->save(array("id"=>$id,"post_like"=>array("exp","post_like+1")));
-    		$this->success("赞好啦！");
+    		$this->success("献花成功！");
     	}else{
-    		$this->error("您已赞过啦！");
+    		$this->error("您已献过花了！");
     	}
 
     }

@@ -15,17 +15,32 @@
         <div class="container">
             <h2>{$name}</h2>
         </div>
-        <div data-toggle="distpicker" id="distpicker">
-            <select data-province="---- 选择省 ----" name="post[post_province]"></select>
-            <select data-city="---- 选择市 ----" name="post[post_city]"></select>
-            <select data-district="---- 选择区 ----" name="post[post_district]"></select>
+        <div data-toggle="distpicker" id="distpicker">地区选择：
+            <select style="width:135px;" data-province="---- 选择省 ----" name="post[post_province]"></select>
+            <select style="width:135px;" data-city="---- 选择市 ----" name="post[post_city]"></select>
+            <select style="width:135px;" data-district="---- 选择区 ----" name="post[post_district]"></select>
+
+
+            <span style="margin-left: 20px;">逝世年份：</span><select name="dieyear" style="width:81px;">
+                <option value="">请选择</option>
+                <php>
+                    for($year = $dieYear['max'];$year >= $dieYear['min'];$year --){
+                    echo "<option>$year</option>";
+                    }
+                </php>
+            </select>
+            <button class="btn btn-info" style="top: -5px;position: relative;left: 20px;"  id="btnFilter">筛选</button>
+            <button class="btn btn-info" style="top: -5px;position: relative;left: 20px;"  id="btnFilterRemove">清除筛选</button>
         </div>
     </div>
-
-    <div class="container">
+<hr>
+    <div class="container" style="margin:40px ;">
         <div>
             <php>
-                $lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",20);
+                $lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",
+                20,
+                NULL,
+                ['region'=>$_GET['region']?$_GET['region']:NULL,'year'=>$_GET['year']?intval($_GET['year']):NULL]);
             </php>
             <div id="container">
                 <div class="grid-sizer"></div>
@@ -41,7 +56,7 @@
                                 <if condition="!empty($smeta['thumb'])">
                                     <div class="item-image">
                                         <a href="{:leuu('article/index',array('id'=>$vo['tid']))}">
-                                            <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="img-responsive" alt="{$vo.post_title}">
+                                            <img style="height:300px ;" src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="img-responsive" alt="{$vo.post_title}">
                                         </a>
                                     </div>
                                     <else />
@@ -50,14 +65,14 @@
                                 <h3><a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_title}</a></h3>
                                 <hr>
                             </div>
-                            <div class="body">
-                                <a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_excerpt|msubstr=0,256}</a>
-                            </div>
+                            <!--<div class="body">-->
+                                <!--<a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_excerpt|msubstr=0,256}</a>-->
+                            <!--</div>-->
                             <div class="footer">
-                                <div class="pull-left"><span class="meta">{$vo.post_date}</span></div>
+                                <div class="pull-left"><span class="meta">发布日期：{$vo.post_date}</span></div>
                                 <div class="pull-right">
                                     <a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
-                                    <a href="{:U('article/do_like',array('id'=>$vo['object_id']))}" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span></a>
+                                    <a href="{:U('article/do_like',array('id'=>$vo['object_id']))}" class="js-count-btn"><i class="fa fa-flowers">献花</i><span class="count">{$vo.post_like}</span></a>
                                     <a href="{:U('user/favorite/do_favorite',array('id'=>$vo['object_id']))}" class="js-favorite-btn" data-title="{$vo.post_title}" data-url="{:U('portal/article/index',array('id'=>$vo['tid']))}" data-key="{:sp_get_favorite_key('posts',$vo['object_id'])}">
                                         <i class="fa fa-star-o"></i>
                                     </a>
@@ -97,7 +112,30 @@
     $container.imagesLoaded(function () {
         $container.masonry();
     });
+    var urlsurfix = '__ROOT__/list/index/id/3';
+    $('#btnFilter').click(function()
+    {
+        if (urlsurfix.charAt(urlsurfix.length-1) != '/'){
+            urlsurfix += '/';
+        }
+        if($('[name="post[post_province]"]').val()){
+        urlsurfix += 'region/';
+        urlsurfix += $('[name="post[post_province]"]').val();
+        urlsurfix += $('[name="post[post_city]"]').val();
+        urlsurfix += $('[name="post[post_district]"]').val();
+        urlsurfix += '/';
+    }
+        if($('[name="dieyear"]').val()) {
+            urlsurfix += 'year/';
+            urlsurfix += $('[name="dieyear"]').val();
+        }
+        location.href = urlsurfix;
+    })
+    $('#btnFilterRemove').click(function()
+    {
 
+        location.href = '__ROOT__/list/index/id/3';
+    })
 </script>
 </body>
 </html>
