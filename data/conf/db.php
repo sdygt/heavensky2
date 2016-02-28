@@ -3,15 +3,15 @@
  * 配置文件
  */
 return array(
-    'DB_TYPE' => 'mysql',
-    'DB_HOST' => 'localhost',
-    'DB_NAME' => 'heavensky2',
-    'DB_USER' => 'root',
-    'DB_PWD' => '',
-    'DB_PORT' => '3306',
-    'DB_PREFIX' => 'hs2_',
-    //密钥
-    "AUTHCODE" => 'nMo4QNVFBG2NmqXZy2',
-    //cookies
-    "COOKIE_PREFIX" => 'KmeQMl_',
+ 'DB_TYPE' => $_SERVER['DB_TYPE'],
+ 'DB_HOST' => $_SERVER['DB_HOST'],
+ 'DB_NAME' => $_SERVER['DB_NAME'],
+ 'DB_USER' => $_SERVER['DB_USER'],
+ 'DB_PWD'  => $_SERVER['DB_PWD'],
+ 'DB_PORT' => $_SERVER['DB_PORT'],
+ 'DB_PREFIX' => $_SERVER['DB_PREFIX'],
+ //密钥
+ "AUTHCODE" => $_SERVER['AUTHCODE'],
+ //cookies
+ "COOKIE_PREFIX" => $_SERVER['COOKIE_PREFIX'],
 );
