@@ -63,13 +63,13 @@ class ArticleController extends HomebaseController {
     }
 
     public function do_like(){
-    	$this->check_login();
+//    	$this->check_login();
 
     	$id=intval($_GET['id']);//posts表中id
 
     	$posts_model=M("Posts");
 
-    	$can_like=sp_check_user_action("posts$id",1);
+    	$can_like=sp_check_user_action("posts$id",1,false,300,false);
 
     	if($can_like){
     		$posts_model->save(array("id"=>$id,"post_like"=>array("exp","post_like+1")));

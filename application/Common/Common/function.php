@@ -49,7 +49,7 @@ function sp_update_current_user($user){
  * @return int
  */
 function get_current_userid(){
-	
+
 	if(isset($_SESSION['user'])){
 		return $_SESSION['user']['id'];
 	}else{
@@ -102,18 +102,18 @@ function sp_get_theme_path(){
  * 获取用户头像相对网站根目录的地址
  */
 function sp_get_user_avatar_url($avatar){
-	
+
 	if($avatar){
 		if(strpos($avatar, "http")===0){
 			return $avatar;
 		}else {
 			return sp_get_asset_upload_path("avatar/".$avatar);
 		}
-		
+
 	}else{
 		return $avatar;
 	}
-	
+
 }
 
 /**
@@ -194,7 +194,7 @@ function sp_clear_cache(){
 		$noneed_clear=array(".","..");
 		$rootdirs=array_diff($rootdirs, $noneed_clear);
 		foreach ( $rootdirs as $dir ) {
-			
+
 			if ($dir != "." && $dir != "..") {
 				$dir = RUNTIME_PATH . $dir;
 				if (is_dir ( $dir )) {
@@ -219,13 +219,13 @@ function sp_clear_cache(){
 		foreach ( $dirs as $dir ) {
 			$dirtool->delDir ( $dir );
 		}
-		
+
 		if(sp_is_sae()){
 			$global_mc=@memcache_init();
 			if($global_mc){
 				$global_mc->flush();
 			}
-			
+
 			$no_need_delete=array("THINKCMF_DYNAMIC_CONFIG");
 			$kv = new SaeKV();
 			// 初始化KVClient对象
@@ -244,9 +244,9 @@ function sp_clear_cache(){
 				if ($i < 100) break;
 				$ret = $kv->pkrget('', 100, $start_key);
 			}
-			
+
 		}
-	
+
 }
 
 /**
@@ -263,11 +263,11 @@ function sp_save_var($path,$value){
  * @return boolean
  */
 function sp_set_dynamic_config($data){
-	
+
 	if(!is_array($data)){
 		return false;
 	}
-	
+
 	if(sp_is_sae()){
 		$kv = new SaeKV();
 		$ret = $kv->init();
@@ -330,7 +330,7 @@ function get_site_options(){
 		F("site_options", $site_options);
 	}
 	$site_options['site_tongji']=htmlspecialchars_decode($site_options['site_tongji']);
-	return $site_options;	
+	return $site_options;
 }
 
 /**
@@ -365,7 +365,7 @@ function sp_get_cmf_settings($key=""){
 
 /**
  * 更新CMF系统的设置，此类设置用于全局
- * @param array $data 
+ * @param array $data
  * @return boolean
  */
 function sp_set_cmf_setting($data){
@@ -383,7 +383,7 @@ function sp_set_cmf_setting($data){
 		}else {
 			$setting=$data;
 		}
-		
+
 		$cmf_settings['option_value']=json_encode($setting);
 		return $options_model->where("option_name='cmf_settings'")->save($cmf_settings);
 	}else{
@@ -472,7 +472,7 @@ function sp_get_menu($id="main",$effected_id="mainmenu",$filetpl="<span class='f
 	if(empty($navs)){
 		$navs=_sp_get_menu_datas($id);
 	}
-	
+
 	import("Tree");
 	$tree = new \Tree();
 	$tree->init($navs);
@@ -489,16 +489,16 @@ function _sp_get_menu_datas($id){
 		$main=$navcat_obj->where("active=1")->find();
 		$id=$main['navcid'];
 	}
-	
+
 	if(empty($id)){
 		return array();
 	}
-	
+
 	$navs= $nav_obj->where("cid=$id and status=1")->order(array("listorder" => "ASC"))->select();
 	foreach ($navs as $key=>$nav){
 		$href=htmlspecialchars_decode($nav['href']);
 		$hrefold=$href;
-		
+
 		if(strpos($hrefold,"{")){//序列 化的数据
 			$href=unserialize(stripslashes($nav['href']));
 			$default_app=strtolower(C("DEFAULT_MODULE"));
@@ -561,7 +561,7 @@ function sp_getcontent_imgs($content){
 
 
 /**
- * 
+ *
  * @param unknown_type $navcatname
  * @param unknown_type $datas
  * @param unknown_type $navrule
@@ -581,7 +581,7 @@ function sp_get_nav4admin($navcatname,$datas,$navrule){
 				$urlrule['param'][$key]=$t[$val];
 			}
 		}
-		
+
 		$nav['items'][]=array(
 				"label"=>$t[$navrule['label']],
 				"url"=>U($action,$urlrule['param']),
@@ -695,9 +695,9 @@ function sp_get_asset_upload_path($file,$withhost=false){
 			}
 		}
 		return $filepath;
-		
-	}                    			
-                        		
+
+	}
+
 }
 
 
@@ -769,24 +769,24 @@ function sp_get_comments($tag="field:*;limit:0,5;order:createtime desc;",$where=
 	$field = !empty($tag['field']) ? $tag['field'] : '*';
 	$limit = !empty($tag['limit']) ? $tag['limit'] : '5';
 	$order = !empty($tag['order']) ? $tag['order'] : 'createtime desc';
-	
+
 	//根据参数生成查询条件
 	$mwhere['status'] = array('eq',1);
-	
+
 	if(is_array($where)){
 		$where=array_merge($mwhere,$where);
 	}else{
 		$where=$mwhere;
 	}
-	
+
 	$comments_model=M("Comments");
-	
+
 	$comments=$comments_model->field($field)->where($where)->order($order)->limit($limit)->select();
 	return $comments;
 }
 
 function sp_file_write($file,$content){
-	
+
 	if(sp_is_sae()){
 		$s=new SaeStorage();
 		$arr=explode('/',ltrim($file,'./'));
@@ -820,7 +820,7 @@ function sp_file_read($file){
 function sp_asset_relative_url($asset_url){
     if(strpos($asset_url,"http")===0){
     	return $asset_url;
-	}else{	
+	}else{
 	    return str_replace(C("TMPL_PARSE_STRING.__UPLOAD__"), "", $asset_url);
 	}
 }
@@ -837,7 +837,7 @@ function sp_content_page($content,$pagetpl='{first}{prev}{liststart}{list}{liste
 	$content=$contents[$page->firstRow];
 	$data['content']=$content;
 	$data['page']=$page->show('default');
-	
+
 	return $data;
 }
 
@@ -889,34 +889,38 @@ function sp_getlinks(){
  * @param number $expire 距离上次访问的最小时间单位s，0表示不限制，大于0表示最后访问$expire秒后才可以访问
  * @return true 可访问，false不可访问
  */
-function sp_check_user_action($object="",$count_limit=1,$ip_limit=false,$expire=0){
+function sp_check_user_action($object="",$count_limit=1,$ip_limit=false,$expire=0,$login=true){
 	$common_action_log_model=M("CommonActionLog");
 	$action=MODULE_NAME."-".CONTROLLER_NAME."-".ACTION_NAME;
 	$userid=get_current_userid();
-	
+
 	$ip=get_client_ip(0,true);//修复ip获取
-	
-	$where=array("user"=>$userid,"action"=>$action,"object"=>$object);
+
+	$where=array("action"=>$action,"object"=>$object);
+	if($login){
+		$where['user']=$userid;
+        $ip_limit=true;
+	}
 	if($ip_limit){
 		$where['ip']=$ip;
 	}
-	
+
 	$find_log=$common_action_log_model->where($where)->find();
-	
+
 	$time=time();
 	if($find_log){
 		$common_action_log_model->where($where)->save(array("count"=>array("exp","count+1"),"last_time"=>$time,"ip"=>$ip));
 		if($find_log['count']>=$count_limit){
 			return false;
 		}
-		
+
 		if($expire>0 && ($time-$find_log['last_time'])<$expire){
 			return false;
 		}
 	}else{
 		$common_action_log_model->add(array("user"=>$userid,"action"=>$action,"object"=>$object,"count"=>array("exp","count+1"),"last_time"=>$time,"ip"=>$ip));
 	}
-	
+
 	return true;
 }
 /**
@@ -927,7 +931,7 @@ function sp_check_user_action($object="",$count_limit=1,$ip_limit=false,$expire=
 function sp_get_favorite_key($table,$object_id){
 	$auth_code=C("AUTHCODE");
 	$string="$auth_code $table $object_id";
-	
+
 	return sp_authencode($string);
 }
 
@@ -935,7 +939,7 @@ function sp_get_favorite_key($table,$object_id){
 function sp_get_relative_url($url){
 	if(strpos($url,"http")===0){
 		$url=str_replace(array("https://","http://"), "", $url);
-		
+
 		$pos=strpos($url, "/");
 		if($pos===false){
 			return "";
@@ -951,7 +955,7 @@ function sp_get_relative_url($url){
 }
 
 /**
- * 
+ *
  * @param string $tag
  * @param array $where
  * @return array
@@ -963,19 +967,19 @@ function sp_get_users($tag="field:*;limit:0,8;order:create_time desc;",$where=ar
 	$field = !empty($tag['field']) ? $tag['field'] : '*';
 	$limit = !empty($tag['limit']) ? $tag['limit'] : '8';
 	$order = !empty($tag['order']) ? $tag['order'] : 'create_time desc';
-	
+
 	//根据参数生成查询条件
 	$mwhere['user_status'] = array('eq',1);
 	$mwhere['user_type'] = array('eq',2);//default user
-	
+
 	if(is_array($where)){
 		$where=array_merge($mwhere,$where);
 	}else{
 		$where=$mwhere;
 	}
-	
+
 	$users_model=M("Users");
-	
+
 	$users=$users_model->field($field)->where($where)->order($order)->limit($limit)->select();
 	return $users;
 }
@@ -1007,10 +1011,10 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 		}elseif(false !== strpos($url,'@')) { // 解析域名
 			list($url,$host)    =   explode('@',$info['path'], 2);
 		}
-		
+
 		// 解析子域名
 		//TODO?
-		
+
 		// 解析参数
 		if(is_string($vars)) { // aaa=1&bbb=2 转换成数组
 			parse_str($vars,$vars);
@@ -1021,11 +1025,11 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 			parse_str($info['query'],$params);
 			$vars = array_merge($params,$vars);
 		}
-		
+
 		$vars_src=$vars;
-		
+
 		ksort($vars);
-		
+
 		// URL组装
 		$depr       =   C('URL_PATHINFO_DEPR');
 		$urlCase    =   C('URL_CASE_INSENSITIVE');
@@ -1058,7 +1062,7 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 			$var[$varController]   =   parse_name($var[$varController]);
 		}
 		$module =   '';
-		
+
 		if(!empty($path)) {
 			$var[$varModule]    =   array_pop($path);
 		}else{
@@ -1076,10 +1080,10 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 		if(isset($var[$varModule])){
 			$module =   $var[$varModule];
 		}
-		
+
 		if(C('URL_MODEL') == 0) { // 普通模式URL转换
 			$url        =   __APP__.'?'.http_build_query(array_reverse($var));
-			
+
 			if($urlCase){
 				$url    =   strtolower($url);
 			}
@@ -1088,20 +1092,20 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 				$url   .=   '&'.$vars;
 			}
 		}else{ // PATHINFO模式或者兼容URL模式
-			
+
 			if(empty($var[C('VAR_MODULE')])){
 				$var[C('VAR_MODULE')]=MODULE_NAME;
 			}
-				
+
 			$module_controller_action=strtolower(implode($depr,array_reverse($var)));
-			
+
 			$has_route=false;
-			
+
 			if(isset($routes[$module_controller_action])){
 				$urlrules=$routes[$module_controller_action];
-				
+
 				$empty_query_urlrule=array();
-				
+
 				foreach ($urlrules as $ur){
 					$intersect=array_intersect($ur['query'], $vars);
 					if($intersect){
@@ -1114,7 +1118,7 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 						$empty_query_urlrule=$ur;
 					}
 				}
-				
+
 				if(!empty($empty_query_urlrule)){
 					$url=$empty_query_urlrule['url'];
 					foreach ($vars as $key =>$value){
@@ -1126,37 +1130,37 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 					$url=str_replace(array("\d","$"), "", $url);
 					$has_route=true;
 				}
-				
+
 				if($has_route){
 					if(!empty($vars)) { // 添加参数
 						foreach ($vars as $var => $val){
 							if('' !== trim($val))   $url .= $depr . $var . $depr . urlencode($val);
 						}
 					}
-					
+
 					$url =__APP__."/".$url ;
-					
+
 				}
-				
-			
+
+
 			}
-			
+
 			if(!$has_route){
 				$module =   defined('BIND_MODULE') ? '' : $module;
 				$url    =   __APP__.'/'.implode($depr,array_reverse($var));
-					
+
 				if($urlCase){
 					$url    =   strtolower($url);
 				}
-					
+
 				if(!empty($vars)) { // 添加参数
 					foreach ($vars as $var => $val){
 						if('' !== trim($val))   $url .= $depr . $var . $depr . urlencode($val);
 					}
 				}
 			}
-			
-			
+
+
 			if($suffix) {
 				$suffix   =  $suffix===true?C('URL_HTML_SUFFIX'):$suffix;
 				if($pos = strpos($suffix, '|')){
@@ -1167,14 +1171,14 @@ function leuu($url='',$vars='',$suffix=true,$domain=false){
 				}
 			}
 		}
-		
+
 		if(isset($anchor)){
 			$url  .= '#'.$anchor;
 		}
 		if($domain) {
 			$url   =  (is_ssl()?'https://':'http://').$domain.$url;
 		}
-		
+
 		return $url;
 	}
 }
@@ -1194,7 +1198,7 @@ function UU($url='',$vars='',$suffix=true,$domain=false){
 
 function sp_get_routes($refresh=false){
 	$routes=F("routes");
-	
+
 	if( (!empty($routes)||is_array($routes)) && !$refresh){
 		return $routes;
 	}
@@ -1203,57 +1207,57 @@ function sp_get_routes($refresh=false){
 	$cache_routes=array();
 	foreach ($routes as $er){
 		$full_url=$er['full_url'];
-			
+
 		// 解析URL
 		$info   =  parse_url($full_url);
-			
+
 		$path       =   explode("/",$info['path']);
 		if(count($path)!=3){//必须是完整 url
 			continue;
 		}
-			
+
 		$module=strtolower($path[0]);
-			
+
 		// 解析参数
 		$vars = array();
 		if(isset($info['query'])) { // 解析地址里面参数 合并到vars
 			parse_str($info['query'],$params);
 			$vars = array_merge($params,$vars);
 		}
-			
+
 		$vars_src=$vars;
-			
+
 		ksort($vars);
-			
+
 		$path=$info['path'];
-			
+
 		$full_url=$path.(empty($vars)?"":"?").http_build_query($vars);
-			
+
 		$url=$er['url'];
-			
+
 		$cache_routes[$path][]=array("query"=>$vars,"url"=>$url);
-			
+
 		$module_routes[$module][$url]=$full_url;
-			
+
 	}
 	F("routes",$cache_routes);
 	$route_dir=SITE_PATH."/data/conf/route/";
 	foreach ($module_routes as $module => $routes){
-		
+
 		if(!file_exists($route_dir)){
 			mkdir($route_dir);
 		}
-			
+
 		$route_file=$route_dir."$module.php";
-			
+
 		$route_ruels=array();
-			
+
 		file_put_contents($route_file, "<?php\treturn " . stripslashes(var_export($routes, true)) . ";");
 	}
-	
+
 	return $cache_routes;
-	
-	
+
+
 }
 
 /**
@@ -1348,7 +1352,7 @@ function sp_get_hooks($refresh=false){
 			return $return_hooks;
 		}
 	}
-	
+
 	$return_hooks=array();
 	$system_hooks=array(
 		"url_dispatch","app_init","app_begin","app_end",
@@ -1356,9 +1360,9 @@ function sp_get_hooks($refresh=false){
 		"template_filter","view_begin","view_end","view_parse",
 		"view_filter","body_start","footer","footer_end","sider","comment",'admin_home'
 	);
-	
+
 	$app_hooks=array();
-	
+
 	$apps=sp_scan_dir(SPAPP."*",GLOB_ONLYDIR);
 	foreach ($apps as $app){
 		$hooks_file=SPAPP.$app."/hooks.php";
@@ -1367,11 +1371,11 @@ function sp_get_hooks($refresh=false){
 			$app_hooks=is_array($hooks)?array_merge($app_hooks,$hooks):$app_hooks;
 		}
 	}
-	
+
 	$tpl_hooks=array();
-	
+
 	$tpls=sp_scan_dir("themes/*",GLOB_ONLYDIR);
-	
+
 	foreach ($tpls as $tpl){
 		$hooks_file= sp_add_template_file_suffix("themes/$tpl/hooks");
 		if(file_exists_case($hooks_file)){
@@ -1382,14 +1386,14 @@ function sp_get_hooks($refresh=false){
 			$tpl_hooks=is_array($hooks)?array_merge($tpl_hooks,$hooks):$tpl_hooks;
 		}
 	}
-	
+
 	$return_hooks=array_merge($system_hooks,$app_hooks,$tpl_hooks);
-	
+
 	$return_hooks=array_unique($return_hooks);
-	
+
 	F('all_hooks',$return_hooks);
 	return $return_hooks;
-	
+
 }
 
 
@@ -1433,7 +1437,7 @@ function sp_auth_check($uid,$name=null,$relation='or'){
 	if(empty($uid)){
 		return false;
 	}
-	
+
 	$iauth_obj=new \Common\Lib\iAuth();
 	if(empty($name)){
 		$name=strtolower(MODULE_NAME."/".CONTROLLER_NAME."/".ACTION_NAME);
@@ -1453,7 +1457,7 @@ function sp_ajax_return($data,$info,$status){
 	$return['info'] = $info;
 	$return['status'] = $status;
 	$data = $return;
-	
+
 	return $data;
 }
 
@@ -1551,23 +1555,23 @@ function sp_check_mobile_verify_code(){
  * @author 5iymt <1145769693@qq.com>
  */
 function sp_execute_sql_file($sql_path) {
-    	
+
 	$context = stream_context_create ( array (
 			'http' => array (
-					'timeout' => 30 
-			) 
+					'timeout' => 30
+			)
 	) ) ;// 超时时间，单位为秒
-	
+
 	// 读取SQL文件
 	$sql = file_get_contents ( $sql_path, 0, $context );
 	$sql = str_replace ( "\r", "\n", $sql );
 	$sql = explode ( ";\n", $sql );
-	
+
 	// 替换表前缀
 	$orginal = 'sp_';
 	$prefix = C ( 'DB_PREFIX' );
 	$sql = str_replace ( "{$orginal}", "{$prefix}", $sql );
-	
+
 	// 开始安装
 	foreach ( $sql as $value ) {
 		$value = trim ( $value );
@@ -1591,7 +1595,7 @@ function sp_get_plugins_return($url, $params = array()){
 	$plugin     = $case ? parse_name($url['scheme']) : $url['scheme'];
 	$controller = $case ? parse_name($url['host']) : $url['host'];
 	$action     = trim($case ? strtolower($url['path']) : $url['path'], '/');
-	
+
 	/* 解析URL带的参数 */
 	if(isset($url['query'])){
 		parse_str($url['query'], $query);
@@ -1605,9 +1609,9 @@ function sp_get_plugins_return($url, $params = array()){
  * @param string $filename_nosuffix
  */
 function sp_add_template_file_suffix($filename_nosuffix){
-    
-    
-    
+
+
+
     if(file_exists_case($filename_nosuffix.C('TMPL_TEMPLATE_SUFFIX'))){
         $filename_nosuffix = $filename_nosuffix.C('TMPL_TEMPLATE_SUFFIX');
     }else if(file_exists_case($filename_nosuffix.".php")){
@@ -1615,7 +1619,7 @@ function sp_add_template_file_suffix($filename_nosuffix){
     }else{
         $filename_nosuffix = $filename_nosuffix.C('TMPL_TEMPLATE_SUFFIX');
     }
-    
+
     return $filename_nosuffix;
 }
 
@@ -1635,7 +1639,7 @@ function sp_get_current_theme($default_theme=''){
         }
     }
     $theme=empty($default_theme)?$theme:$default_theme;
-    
+
     return $theme;
 }
 
@@ -1647,13 +1651,13 @@ function sp_template_file_exists($file){
     $theme= sp_get_current_theme();
     $filepath=C("SP_TMPL_PATH").$theme."/".$file;
     $tplpath = sp_add_template_file_suffix($filepath);
-    
+
     if(file_exists_case($tplpath)){
         return true;
     }else{
         return false;
     }
-    
+
 }
 
 /**
@@ -1698,7 +1702,7 @@ function sp_get_menu_info($id,$navdata=false){
 function sp_check_lang(){
     $langSet = C('DEFAULT_LANG');
     if (C('LANG_SWITCH_ON',null,false)){
-        
+
         $varLang =  C('VAR_LANGUAGE',null,'l');
         $langList = C('LANG_LIST',null,'zh-cn');
         // 启用了语言包功能
@@ -1719,9 +1723,9 @@ function sp_check_lang(){
             }
         }
     }
-    
+
     return strtolower($langSet);
-    
+
 }
 
 /**
@@ -1732,7 +1736,7 @@ function sp_check_lang(){
 */
 function sp_delete_physics_img($imglist){
     $file_path = C("UPLOADPATH");
-    
+
     if ($imglist) {
         if ($imglist['thumb']) {
             $file_path = $file_path . $imglist['thumb'];
@@ -1747,7 +1751,7 @@ function sp_delete_physics_img($imglist){
                 $res = FALSE;
             }
         }
-        
+
         if ($imglist['photo']) {
             foreach ($imglist['photo'] as $key => $value) {
                 $file_path = C("UPLOADPATH");
@@ -1767,6 +1771,6 @@ function sp_delete_physics_img($imglist){
     } else {
         $res = FALSE;
     }
-    
+
     return $res;
 }
